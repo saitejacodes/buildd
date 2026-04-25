@@ -3,6 +3,9 @@
 import os
 import chromadb
 from chromadb.utils import embedding_functions
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CHROMA_PATH = "vector_store"
 COLLECTION_NAME = "visa_direct_docs"
@@ -33,8 +36,8 @@ def build_vector_store():
     # Setup ChromaDB with sentence-transformers embeddings
     client = chromadb.PersistentClient(path=CHROMA_PATH)
 
-    embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
-        model_name="all-MiniLM-L6-v2"
+    embedding_fn = embedding_functions.GoogleGenerativeAiEmbeddingFunction(
+        api_key=os.getenv("GEMINI_API_KEY")
     )
 
     # Delete existing collection if exists
@@ -61,8 +64,8 @@ def retrieve_relevant_chunks(question: str, top_k: int = 4) -> str:
     
     client = chromadb.PersistentClient(path=CHROMA_PATH)
 
-    embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
-        model_name="all-MiniLM-L6-v2"
+    embedding_fn = embedding_functions.GoogleGenerativeAiEmbeddingFunction(
+        api_key=os.getenv("GEMINI_API_KEY")
     )
 
     collection = client.get_collection(

@@ -5,7 +5,7 @@ uvicorn
 python-dotenv
 requests
 chromadb
-sentence-transformers
+google-generativeai
 beautifulsoup4
 httpx
 tiktoken

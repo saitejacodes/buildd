@@ -1,0 +1,11 @@
+streamlit
+groq
+fastapi
+uvicorn
+python-dotenv
+requests
+chromadb
+sentence-transformers
+beautifulsoup4
+httpx
+tiktoken

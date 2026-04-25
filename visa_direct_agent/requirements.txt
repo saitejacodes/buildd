@@ -9,3 +9,4 @@ sentence-transformers
 beautifulsoup4
 httpx
 tiktoken
+protobuf<5.0.0
